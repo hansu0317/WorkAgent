@@ -220,8 +220,10 @@ __pycache__/
 - [x] Qdrant 연동
 
 ### Phase 3 — LangGraph 에이전트
-- [ ] RAG 노드 (Qdrant 검색)
+- [ ] RAG 노드 (Qdrant 검색 → GPT 답변 생성)
+- [ ] Text-to-SQL 노드 (자연어 → SQL → DB 조회)
 - [ ] Tool Calling (Gmail, Calendar)
+- [ ] 에이전트 라우터 (RAG vs SQL 자동 판단)
 - [ ] Multi-Agent 그래프
 
 ### Phase 4 — 스케줄링 + 자동화
