@@ -1,3 +1,13 @@
 from __future__ import annotations
 
-# Phase 2에서 LLM / VectorStore 의존성 주입 구현 예정
+from typing import Annotated
+
+from fastapi import Depends
+from langchain_openai import OpenAIEmbeddings
+from qdrant_client import AsyncQdrantClient
+
+from app.rag.embeddings import get_embeddings
+from app.rag.vectorstore import get_client
+
+QdrantDep = Annotated[AsyncQdrantClient, Depends(get_client)]
+EmbeddingsDep = Annotated[OpenAIEmbeddings, Depends(get_embeddings)]
