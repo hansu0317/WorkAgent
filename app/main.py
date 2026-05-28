@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from app.api.routes import agent, documents
 from app.core.config import settings
 from app.core.logger import get_logger
 
@@ -23,6 +24,9 @@ app = FastAPI(
     version="0.1.0",
     lifespan=lifespan,
 )
+
+app.include_router(documents.router)
+app.include_router(agent.router)
 
 
 @app.get("/health")

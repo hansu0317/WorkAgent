@@ -5,7 +5,7 @@
 회사 업무 자동화 AI 개인 비서 에이전트.
 이메일 요약 / 회의록 정리 / 할일 추출 / 사내 문서 Q&A를 하나의 에이전트가 처리.
 
-**현재 Phase**: Phase 1 — 환경 세팅 중
+**현재 Phase**: Phase 2 — FastAPI 엔드포인트 완료 / Phase 3 준비 중
 > Phase 바뀔 때마다 이 줄 업데이트
 
 ---
@@ -165,7 +165,6 @@ open http://localhost:8080
 
 ```
 main       ← 동작하는 완성본만. 직접 커밋 금지
-develop    ← 작업 통합 브랜치. 여기서 feat/* 머지
 feat/*     ← 기능 단위 (강의 섹션 하나 = feat 브랜치 하나)
 fix/*      ← 버그 수정
 ```
@@ -183,18 +182,14 @@ docs(claude): Phase 2 완료 업데이트
 
 ```bash
 # 새 기능 시작
-git checkout develop
+git checkout main
 git checkout -b feat/rag-retriever
 
-# 작업 후 develop에 머지
+# 작업 후 main에 머지
 git add .
 git commit -m "feat(rag): Qdrant retriever 노드 구현"
-git checkout develop
-git merge feat/rag-retriever
-
-# develop → main (Phase 완료 시)
 git checkout main
-git merge develop
+git merge feat/rag-retriever
 git push origin main
 ```
 
@@ -214,15 +209,15 @@ __pycache__/
 ## 구현 상태
 
 ### Phase 1 — 환경 세팅
-- [ ] poetry 프로젝트 생성
-- [ ] .env 설정
-- [ ] docker-compose 기본 구성 (FastAPI + Qdrant)
-- [ ] FastAPI 앱 기본 구조
+- [x] poetry 프로젝트 생성
+- [x] .env 설정
+- [x] docker-compose 기본 구성 (Qdrant on Docker, FastAPI on-prem)
+- [x] FastAPI 앱 기본 구조
 
 ### Phase 2 — FastAPI 엔드포인트
-- [ ] POST /api/v1/upload-doc
-- [ ] POST /api/v1/ask
-- [ ] Qdrant 연동
+- [x] POST /api/v1/upload-doc
+- [x] POST /api/v1/ask
+- [x] Qdrant 연동
 
 ### Phase 3 — LangGraph 에이전트
 - [ ] RAG 노드 (Qdrant 검색)
